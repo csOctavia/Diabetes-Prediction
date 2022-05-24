@@ -8,6 +8,7 @@ The project is divided into four main parts:
 4. Results
 
 **I. Data Exploration**
+
 ![missing data box plot](https://user-images.githubusercontent.com/106180362/170104911-aee6df4e-bbe7-4d6a-a594-da1a95c1ab64.png)
 
 Upon initial inspection of the dataset it is clear there are a number of zeros within many features. For the features Pregnancies and Outcome the zeros are feasible values, as it is feasible a woman has not had any pregnancies and 0 in Outcome represents the absence of diabetes. However for the features BloodPressure, SkinThickness, Glucose, BMI, and Insulin the value zero is impossible, therefore this most likely represents missing values. 
