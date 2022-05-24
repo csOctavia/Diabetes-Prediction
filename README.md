@@ -26,10 +26,12 @@ Pre-processing aims at assessing and improving the quality of data to allow for 
 The first step was transforming all the 0 values from the variables Glucose, Blood Pressure, Skin Thickness, Insulin, BMI and Diabetes Pedigree Function into NA’s so that the dataset could be used for visualizations and imputed later on.
 
 _Outliers_
+
 Outliers were found in all variables but Glucose by using boxplots. However, such high measurements of Insulin and BloodPressure are most likely erroneous and because it was found that a classifier degrades in performance with the presence of noise, they were removed in Model 1 and Model 2 so that they do not skew the results. 
 Various techniques have been proposed for dealing with outliers, one of them being oversampling. However, our dataset only has 0.06% outliers, which is not a significant number, thus I opted for removing the ones in Model 1 and Model 2 only for variables SkinThickness and Insulin which were implausible, as the model won’t be affected by the loss of instances.
 
 _Partitioning the dataset_
+
 The dataset was partitioned into training and testing, then both of them checked to see if their distributions were similar using visualizations.
 Missing data imputation
 The dataset doesn’t come with an extensive documentation that details how exactly the data was gathered. Thus, it is unclear to us how the missing data came to be. 
@@ -46,6 +48,7 @@ Single imputation replaces the missing observations with a single value, which d
 Therefore, I opted to use multiple imputation over single imputation in order to replace the missing observations, namely Amelia imputation and MissForest imputation, which was shown to be a highly accurate method in clinical predictive models.
 
 _Feature Selection/Reduction_
+
 In an attempt to try and increase accuracy, the model was tested on a subset of five features that ranked very highly in terms of relevance to make a diagnosis, namely Glucose, BMI, Age, Insulin and Skin Thickness22. A further attempt at reducing the dataset was made to improve performance and for comparison purposes by implementing the second author’s way of only removing the features SkinThickness and Insulin, leaving me with 6 features.
 
  
