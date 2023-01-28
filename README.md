@@ -12,6 +12,10 @@ The project is divided into four main parts:
 
 **I. Data Exploration**
 
+<img width="500" height="350" alt="dataset summary" src="https://user-images.githubusercontent.com/106180362/215295779-3da6da18-b333-45aa-a70a-26a113fccb4a.png">
+
+The dataset consists of eight predictor variables and one output variable. There are a total of 768 observations. The constraints placed on this particular dataset is that all the patients are female, at least 21 years of age and of Pima Indian heritage, who are North American Indication who originated from the state of Arizona, United States.
+
 ![missing data box plot](https://user-images.githubusercontent.com/106180362/170104911-aee6df4e-bbe7-4d6a-a594-da1a95c1ab64.png)
 
 Upon initial inspection of the dataset it is clear there are a number of zeros within many features. For the features Pregnancies and Outcome the zeros are feasible values, as it is feasible a woman has not had any pregnancies and 0 in Outcome represents the absence of diabetes. However, for the features BloodPressure, SkinThickness, Glucose, BMI, and Insulin the value zero is impossible, therefore this most likely represents missing values. 
