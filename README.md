@@ -10,7 +10,7 @@ The project is divided into four main parts:
 3. Building the models
 4. Results
 
-**I. Data Exploration**
+## I. Data Exploration
 
 <img width="500" height="350" alt="dataset summary" src="https://user-images.githubusercontent.com/106180362/215295779-3da6da18-b333-45aa-a70a-26a113fccb4a.png">
 
@@ -27,21 +27,21 @@ Another potential problem to model performance are outliers that may exist withi
 
 The correlation matrix confirms that even after removing any missing values, the variables Glucose and Insulin are highly correlated, as well as SkinThickness and BMI. What this could mean is that there is another factor that is causing these correlations, namely the presence of diabetes in this case.
 
-**II. Data Pre-Processing**
+## II. Data Pre-Processing
 
 Pre-processing aims at assessing and improving the quality of data to allow for reliable statistical analysis. After the exploratory analysis of the data, the only issues found were missing values for a few variables and outliers, which need to be addressed. The dataset has to go through several pre-processing steps before we can build our models, otherwise the missing values and outliers can introduce bias and skew our analysis and results. Other than this, the dataset is tidy and doesn’t require further cleaning up.
 The first step was transforming all the 0 values from the variables Glucose, Blood Pressure, Skin Thickness, Insulin, BMI and Diabetes Pedigree Function into NA’s so that the dataset could be used for visualizations and imputed later on.
 
-_Outliers_
+***Outliers***
 
 Outliers were found in all variables, but Glucose, by using boxplots. However, such high measurements of Insulin and BloodPressure are most likely erroneous and because it was found that a classifier degrades in performance with the presence of noise, they were removed in Model 1 and Model 2 so that they do not skew the results. 
 Various techniques have been proposed for dealing with outliers, one of them being oversampling. However, our dataset only has 0.06% outliers, which is not a significant number, thus I opted for removing the ones in Model 1 and Model 2 only for variables SkinThickness and Insulin which were implausible, as the model won’t be affected by the loss of instances.
 
-_Partitioning the dataset_
+***Partitioning the dataset***
 
 The dataset was partitioned into training and testing, then both of them checked to see if their distributions were similar using visualizations.
 
-_Missing data imputation_
+***Missing data imputation***
 
 The dataset doesn’t come with an extensive documentation that details how exactly the data was gathered. Thus, it is unclear to us how the missing data came to be. 
 
@@ -59,12 +59,12 @@ There are 652 missing values in the dataset, or 9.4% , so removing them is not a
 Single imputation replaces the missing observations with a single value, which disturbs the relations between variables and introduces bias. 
 Therefore, I opted to use multiple imputation over single imputation in order to replace the missing observations, namely Amelia imputation and MissForest imputation, which was shown to be a highly accurate method in clinical predictive models.
 
-_Feature Selection/Reduction_
+***Feature Selection/Reduction***
 
 In an attempt to try and increase accuracy, the model was tested on a subset of five features that ranked very highly in terms of relevance to make a diagnosis, namely Glucose, BMI, Age, Insulin and Skin Thickness. A further attempt at reducing the dataset was made to improve performance and for comparison purposes by implementing the second author’s way of only removing the features SkinThickness and Insulin, leaving me with 6 features.
 
  
-**III. Building the Models** 
+## III. Building the Models 
  
 An Artificial Neural Network algorithm was used to produce a classification for the Pima Indians Diabetes dataset and six different models were created and compared.
 The classification was done iteratively, the pre-processing was done in stages and each model was tested on the dataset at each of the stages. The stages can be seen in the following figure:
@@ -72,15 +72,15 @@ The classification was done iteratively, the pre-processing was done in stages a
 <img width="514" alt="Screenshot 2022-05-24 at 19 27 48" src="https://user-images.githubusercontent.com/106180362/170106515-30d35e74-014e-4072-a33a-2116949e254f.png">
 
 
-**IV. Results**
+## IV. Results
 
-_Data Analysis and Pre-Processing stage_
+***Data Analysis and Pre-Processing stage***
 
 Visualization was an important tool for insight generation and discovering anomalies in the data and was successful in pointing me towards the areas that needed pre-processing, namely discovering missing observations disguised by zero values and boundary violations in the form of outliers.
 
 Visualizing the percentage of missing data for every age group gave another valuable insight. We can see that for the variable Insulin, the percentage of missing values grows as the age gets higher, with over 60% of missing data for patients over 60. However, at closer inspection, it becomes apparent that this is because the number of observations significantly decreases as the patients get older. Removing the entries with missing values entirely will result in excluding observations for patients over 60 and the classification model will not generalize well for older patients, as it will likely introduce bias.
 
-_Classification Stage_
+***Classification Stage***
 
 The performance metrics used were Accuracy, Sensitivity, Specificity, Precision, F1-Score. The summary of models can be seen in Fig. 8. Before running each model the seed “1234” was set for reproducible results. 
 
